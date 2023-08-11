@@ -1,0 +1,18 @@
+{
+    "name": "6502",
+    "description": "",
+    "year": 1975,
+    "endian": "little",
+    "bits": 8,
+    "registers": [
+        {
+            "name": "increment"
+        },
+        {
+            "name": "X"
+        },
+        {
+            "name": "Y"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "$id": "https://example.com/architecture-schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CPU Architecture",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The architecture's name."
+        },
+        "description": {
+            "type": "string",
+            "description": "A description of the architecture."
+        },
+        "age": {
+            "description": "Age in years which must be equal to or greater than zero.",
+            "type": "integer",
+            "minimum": 0
+        }
+    }
+}
