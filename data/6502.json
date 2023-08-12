@@ -1,4 +1,5 @@
 {
+    "$schema": "../architecture-schema.json",
     "name": "6502",
     "description": "",
     "year": 1975,
@@ -13,6 +14,107 @@
         },
         {
             "name": "Y"
+        }
+    ],
+    "instructions": [
+        {
+            "type": "BREAK",
+            "name": "BRK",
+            "description": "",
+            "mode": "implied",
+            "bytes": 1,
+            "opcode": "00",
+            "cycles": 7,
+            "inputs": [],
+            "output": {}
+        },
+        {
+            "type": "OR",
+            "name": "ORA",
+            "description": "",
+            "mode": "(indirect,X)",
+            "bytes": 2,
+            "opcode": "01 %0",
+            "cycles": 6,
+            "inputs": [
+                {
+                    "type": "constant"
+                },
+                {
+                    "type": "register",
+                    "registerName": "A"
+                },
+                {
+                    "type": "register",
+                    "registerName": "X"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
+        },
+        {
+            "type": "OR",
+            "name": "ORA",
+            "description": "",
+            "mode": "zeropage",
+            "bytes": 2,
+            "opcode": "05 %0",
+            "cycles": 3,
+            "inputs": [
+                {
+                    "type": "constant"
+                },
+                {
+                    "type": "register",
+                    "registerName": "A"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
+        },
+        {
+            "type": "OR",
+            "name": "ORA",
+            "description": "",
+            "mode": "zeropage",
+            "bytes": 2,
+            "opcode": "05 %0",
+            "cycles": 3,
+            "inputs": [
+                {
+                    "type": "constant"
+                },
+                {
+                    "type": "register",
+                    "registerName": "A"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
+        },
+        {
+            "type": "1B_LEFT_SHIFT",
+            "name": "ASL",
+            "description": "",
+            "mode": "zeropage",
+            "bytes": 2,
+            "opcode": "06 %0",
+            "cycles": 5,
+            "inputs": [
+                {
+                    "type": "constant"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
         }
     ]
 }
