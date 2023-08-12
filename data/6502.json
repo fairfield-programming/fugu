@@ -7,13 +7,22 @@
     "bits": 8,
     "registers": [
         {
-            "name": "increment"
+            "name": "A"
         },
         {
             "name": "X"
         },
         {
             "name": "Y"
+        },
+        {
+            "name": "SR"
+        },
+        {
+            "name": "SP"
+        },
+        {
+            "name": "PC"
         }
     ],
     "instructions": [
@@ -77,28 +86,6 @@
             }
         },
         {
-            "type": "OR",
-            "name": "ORA",
-            "description": "",
-            "mode": "zeropage",
-            "bytes": 2,
-            "opcode": "05 %0",
-            "cycles": 3,
-            "inputs": [
-                {
-                    "type": "constant"
-                },
-                {
-                    "type": "register",
-                    "registerName": "A"
-                }
-            ],
-            "output": {
-                "type": "register",
-                "registerName": "A"
-            }
-        },
-        {
             "type": "1B_LEFT_SHIFT",
             "name": "ASL",
             "description": "",
@@ -114,6 +101,20 @@
             "output": {
                 "type": "register",
                 "registerName": "A"
+            }
+        },
+        {
+            "type": "PUSH_SR",
+            "name": "PHP",
+            "description": "",
+            "mode": "implied",
+            "bytes": 1,
+            "opcode": "08 %0",
+            "cycles": 3,
+            "inputs": [],
+            "output": {
+                "type": "register",
+                "registerName": "SR"
             }
         }
     ]

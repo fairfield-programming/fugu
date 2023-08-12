@@ -68,7 +68,8 @@
                             "BREAK",
                             "ADD",
                             "OR",
-                            "1B_LEFT_SHIFT"
+                            "1B_LEFT_SHIFT",
+                            "PUSH_SR"
                         ]
                     },
                     "name": {
