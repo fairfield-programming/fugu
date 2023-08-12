@@ -7,22 +7,28 @@
     "bits": 8,
     "registers": [
         {
-            "name": "A"
+            "name": "A",
+            "description": "This 8-bit register is the primary register for arithmetic and logic operations. It is also used for data manipulation."
         },
         {
-            "name": "X"
+            "name": "X",
+            "description": "An 8-bit register, often used for indexing and addressing purposes in memory operations."
         },
         {
-            "name": "Y"
+            "name": "Y",
+            "description": "Similar to X, this 8-bit register is used for indexing and addressing memory locations."
         },
         {
-            "name": "SR"
+            "name": "SR",
+            "description": "This is a 8-bit register, often referred to as the Processor Status Register. It contains various status flags that reflect the outcomes of arithmetic operations, and other processor conditions."
         },
         {
-            "name": "SP"
+            "name": "SP",
+            "description": "A 8-bit register that keeps track of the current position on the stack."
         },
         {
-            "name": "PC"
+            "name": "PC",
+            "description": "A 16-bit register that holds the memory address of the next instruction to be executed."
         }
     ],
     "instructions": [
