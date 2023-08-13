@@ -1,7 +1,7 @@
 {
     "$id": "https://example.com/architecture-schema.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "CPU Architecture",
+    "title": "Architecture",
     "type": "object",
     "properties": {
         "$schema": {},
@@ -37,25 +37,17 @@
             "minimum": 1,
             "maximum": 1024
         },
+        "memoryBytes": {
+            "type": "integer",
+            "title": "Number of Bytes in the Memory",
+            "description": "This is the number of bytes in the entire memory."
+        },
         "registers": {
             "type": "array",
             "title": "Register Data",
             "description": "The registers that the architecture supports.",
             "items": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string",
-                        "title": "Register Name",
-                        "description": "The name of the register."
-                    },
-                    "description": {
-                        "type": "string",
-                        "title": "Register Description",
-                        "description": "A description of the register."
-                    }
-                },
-                "additionalProperties": false
+                "$ref": "#/defs/register"
             }
         },
         "instructions": {
@@ -91,7 +83,7 @@
                         "type": "string",
                         "title": "Instruction Mode",
                         "description": "Describes what mode the instruction uses.",
-                        "pattern": "^(implied|zeropage|zeropage,[0-9a-zA-Z]+|\\(indirect,[0-9a-zA-Z]+\\))$"
+                        "pattern": "^(implied|immediate|absolute|zeropage|zeropage,[0-9a-zA-Z]+|\\(indirect,[0-9a-zA-Z]+\\))$"
                     },
                     "bytes": {
                         "type": "integer",
@@ -104,6 +96,11 @@
                         "type": "string",
                         "title": "Opcode",
                         "description": "The opcode of the instruction."
+                    },
+                    "assembler": {
+                        "type": "string",
+                        "title": "Assembler String",
+                        "description": "The assembler code for the instruction."
                     },
                     "cycles": {
                         "type": "integer",
@@ -129,19 +126,40 @@
                     "inputs": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/defs/dataLocation"
+                            "$ref": "#/defs/location"
                         }
                     },
                     "output": {
-                        "$ref": "#/defs/dataLocation"
+                        "$ref": "#/defs/location"
                     }
                 },
                 "additionalProperties": false
             }
         }
     },
+    "required": [
+        "name",
+        "registers",
+        "instructions"
+    ],
     "defs": {
-        "dataLocation": {
+        "register": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Register Name",
+                    "description": "The name of the register."
+                },
+                "description": {
+                    "type": "string",
+                    "title": "Register Description",
+                    "description": "A description of the register."
+                }
+            },
+            "additionalProperties": false
+        },
+        "location": {
             "type": "object",
             "properties": {
                 "type": {

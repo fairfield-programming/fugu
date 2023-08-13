@@ -7,26 +7,32 @@
     "bits": 8,
     "registers": [
         {
+            "type": "arithmetic",
             "name": "A",
             "description": "This 8-bit register is the primary register for arithmetic and logic operations. It is also used for data manipulation."
         },
         {
+            "type": "general",
             "name": "X",
             "description": "An 8-bit register, often used for indexing and addressing purposes in memory operations."
         },
         {
+            "type": "general",
             "name": "Y",
             "description": "Similar to X, this 8-bit register is used for indexing and addressing memory locations."
         },
         {
+            "type": "status",
             "name": "SR",
             "description": "This is a 8-bit register, often referred to as the Processor Status Register. It contains various status flags that reflect the outcomes of arithmetic operations, and other processor conditions."
         },
         {
+            "type": "stack_pointer",
             "name": "SP",
             "description": "A 8-bit register that keeps track of the current position on the stack."
         },
         {
+            "type": "pointer",
             "name": "PC",
             "description": "A 16-bit register that holds the memory address of the next instruction to be executed."
         }
@@ -35,10 +41,11 @@
         {
             "type": "BREAK",
             "name": "BRK",
-            "description": "",
+            "description": "BRK initiates a software interrupt similar to a hardware interrupt (IRQ).",
             "mode": "implied",
             "bytes": 1,
             "opcode": "00",
+            "assembler": "BRK",
             "cycles": 7,
             "inputs": [],
             "output": {}
@@ -50,6 +57,7 @@
             "mode": "(indirect,X)",
             "bytes": 2,
             "opcode": "01 %0",
+            "assembler": "ORA (%0,X)",
             "cycles": 6,
             "inputs": [
                 {
@@ -76,6 +84,7 @@
             "mode": "zeropage",
             "bytes": 2,
             "opcode": "05 %0",
+            "assembler": "ORA %0",
             "cycles": 3,
             "inputs": [
                 {
@@ -98,6 +107,7 @@
             "mode": "zeropage",
             "bytes": 2,
             "opcode": "06 %0",
+            "assembler": "ASL %0",
             "cycles": 5,
             "inputs": [
                 {
@@ -116,11 +126,94 @@
             "mode": "implied",
             "bytes": 1,
             "opcode": "08 %0",
+            "assembler": "PHP",
             "cycles": 3,
             "inputs": [],
             "output": {
                 "type": "register",
                 "registerName": "SR"
+            }
+        },
+        {
+            "type": "OR",
+            "name": "ORA",
+            "description": "",
+            "mode": "immediate",
+            "bytes": 2,
+            "opcode": "09 %0",
+            "assembler": "ORA #%0",
+            "cycles": 2,
+            "inputs": [
+                {
+                    "type": "constant"
+                },
+                {
+                    "type": "register",
+                    "registerName": "A"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
+        },
+        {
+            "type": "1B_LEFT_SHIFT",
+            "name": "ASL",
+            "description": "Arithmetic Shift Left",
+            "mode": "accumulator",
+            "bytes": 1,
+            "opcode": "0A",
+            "assembler": "ASL A",
+            "cycles": 2,
+            "inputs": [
+                {
+                    "type": "register",
+                    "registerName": "A"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
+        },
+        {
+            "type": "OR",
+            "name": "ORA",
+            "description": "Logical Inclusive OR",
+            "mode": "absolute",
+            "bytes": 3,
+            "opcode": "0D %0",
+            "assembler": "ORA %1%0",
+            "cycles": 4,
+            "inputs": [
+                {
+                    "type": "constant"
+                }
+            ],
+            "output": {
+                "type": "register",
+                "registerName": "A"
+            }
+        },
+        {
+            "type": "1B_LEFT_SHIFT",
+            "name": "ASL",
+            "description": "Arithmetic Shift Left",
+            "mode": "absolute",
+            "bytes": 3,
+            "opcode": "0E %0",
+            "assembler": "ASL %0",
+            "cycles": 6,
+            "inputs": [
+                {
+                    "type": "memory",
+                    "addressingMode": "absolute"
+                }
+            ],
+            "output": {
+                "type": "memory",
+                "addressingMode": "absolute"
             }
         }
     ]

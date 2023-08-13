@@ -1,0 +1,25 @@
+{
+  "name": "fugu",
+  "version": "1.0.0",
+  "description": "A compiler infrastructure that is built to be simple.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fairfield-programming/fugu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fairfield-programming/fugu/issues"
+  },
+  "homepage": "https://github.com/fairfield-programming/fugu#readme",
+  "type": "module",
+  "dependencies": {
+    "json-schema-to-typescript": "^13.0.2"
+  },
+  "allowImportingTsExtensions": true
+}

@@ -6,5 +6,5 @@ A compiler infrastructure that is built to be simple.
 
 ## Acknowledgements
 
-    - [The LLVM Project](https://llvm.org/)
-    - [GNU Compiler Collection](https://gcc.gnu.org/)
+- [The LLVM Project](https://llvm.org/)
+- [GNU Compiler Collection](https://gcc.gnu.org/)
